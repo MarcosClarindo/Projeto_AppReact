@@ -1,9 +1,10 @@
+import Header from "../partials/Header"
 
 
 
 const Home = () => {
     return (
-        <h1>Home</h1>
+        <Header/>
     )
 }
 
