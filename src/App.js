@@ -2,18 +2,21 @@ import { BrowserRouter as Router,
 Switch,
 Route} from "react-router-dom/cjs/react-router-dom.min";
 
+import TemplateDefault from './templates/Default'
 import Home from "./pages/Home";
 
 
 const App = () => {
   return (
-   <Router>
-     <Switch>
-       <Route path="/">
-         <Home/>
-       </Route>
-     </Switch>
-   </Router>
+    <TemplateDefault>
+      <Router>
+        <Switch>
+          <Route path="/">
+            <Home/>
+          </Route>
+        </Switch>
+      </Router>
+   </TemplateDefault>
   );
 }
 
