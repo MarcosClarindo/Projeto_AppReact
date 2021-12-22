@@ -1,39 +1,35 @@
-// Consumindo uma API
-import { useState, useEffect } from "react"
 import axios from "axios"
-
+import { useState, useEffect } from "react"
 import CustomerCard from "../components/CustomerCard"
+import Grid from '@mui/material/Grid';
 
 
 const Customers = () => {
-
     const [customers, setCustomers] = useState ([])
-
-    // Buscando os dados na API
-    useEffect(() => { // pegando o endereço da página
+    useEffect (() => {
         axios.get('https://reqres.in/api/users?')
-            .then(response => {
-                const { data } = response.data
+        .then (response =>{
+            const { data } = response.data
 
-                setCustomers(data)
-            })
-    }, [])// passar vazio
+            setCustomers(data)
+        })
+    }, [])
+
     return (
-        <>
-            <h1>Customers</h1>
-            {
-                customers.map(item => (
-                <CustomerCard
-                    name={item.first_name}
-                    lastname={item.last_name}
-                    email={item.email}
-                    avatar={item.avatar}    
-                />
-                ))
-            }
-            
-            
-        </>
+            <Grid container rowSpacing={2}>
+                {
+                    customers.map (item =>(
+                        <Grid item xs={12} md={4}>
+                            <CustomerCard 
+                                name= {item.first_name}
+                                lastname= {item.last_name}
+                                email= {item.email}
+                                avatar = {item.avatar}
+                            />
+                        </Grid>
+                    ))   
+                }
+            </Grid>
     )
 }
 

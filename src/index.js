@@ -14,12 +14,8 @@ const theme = createTheme({
      main: red[900]
     },
     secondary: {
-      main: deepPurple[500]
-      
-    }
-
-    
-      
+      main: deepPurple[500] 
+    } 
   },
 });
 
