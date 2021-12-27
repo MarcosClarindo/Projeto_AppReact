@@ -1,10 +1,10 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
-import CustomerCard from "../components/CustomerCard"
+import CustomerCard from "../../components/CustomerCard"
 import Grid from '@mui/material/Grid';
 
 
-const Customers = () => {
+const List = () => {
     const [customers, setCustomers] = useState ([])
     useEffect (() => {
         axios.get('https://reqres.in/api/users?')
@@ -46,4 +46,4 @@ const Customers = () => {
     )
 }
 
-export default Customers
+export default List

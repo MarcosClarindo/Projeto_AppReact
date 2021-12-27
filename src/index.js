@@ -11,10 +11,10 @@ import { red, deepPurple } from '@mui/material/colors';
 const theme = createTheme({
   palette: {
     primary:{
-     main: red[900]
+     main: deepPurple[500]
     },
     secondary: {
-      main: deepPurple[500] 
+      main:  red[900]
     } 
   },
 });
