@@ -14,10 +14,12 @@ import ModalConfirm from './ModalConfirm';
 
 
 const CustomerCard = ({
+    id,
     name,
     lastname,
     email,
     avatar,
+    onRemoveCustomer,
 }) => {
 
   const [openModal, setOpenModal] = useState(false)
@@ -26,8 +28,11 @@ const CustomerCard = ({
     setOpenModal(!openModal)
   }
 
-  const handleConfirmModal = () => {
-    alert('ok')
+  const handleConfirmModal = id => {
+    onRemoveCustomer(id)
+    // sumindo com a caixa de confirmação após confirmação de exclusão
+  
+    handleToggleOpenModal()
   }
 
   const handleRemoveCustomer = () => {
@@ -58,7 +63,7 @@ const CustomerCard = ({
       <ModalConfirm 
         open={openModal}
         onClose={handleToggleOpenModal}
-        onConfirm={handleConfirmModal}
+        onConfirm={() => handleConfirmModal(id)} // para a função nãe ser executada imediatamente
         title= "Deseja realmente excluir este cadastro?"
         message= "Ao confirmar não será possível reverter esta operação."
       />
