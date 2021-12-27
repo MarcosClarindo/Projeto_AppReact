@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles'
 import { useState } from 'react';
 import axios from 'axios';
+import Toasty from '../../components/Toasty';
 
 const useStyles = makeStyles((theme) => ({
     wrapper: {
@@ -16,6 +17,8 @@ const Register =() => {
         name: '',
         job: '',
     })
+
+    const [openToasty, setOpenToasty] = useState(false)
 
     const handleInputChange = (e) => {
         const { name, value} = e.target
@@ -58,7 +61,7 @@ const Register =() => {
             name: form.name.value,
             job: form.job.value,
         }).then((response) => {
-            console.log('ok', response)
+            setOpenToasty(true)
         })
     }
 
@@ -84,8 +87,10 @@ const Register =() => {
                 onChange={handleInputChange}/> 
             </div>
             <div className={classes.wrapper}>
-                <Button variant='contained' onClick={handleRegisterButton}>Cadastrar</Button>
+                <Button variant='contained' color='secondary'
+                onClick={handleRegisterButton}>Cadastrar</Button>
             </div>
+            <Toasty open={openToasty} severity="success"text= "Cadastro realizado com sucesso!"/>
         </>   
              
     )
