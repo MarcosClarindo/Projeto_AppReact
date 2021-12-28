@@ -1,10 +1,12 @@
 import axios from "axios"
+import { useHistory } from "react-router-dom"
 import { useState, useEffect } from "react"
 import CustomerCard from "../../components/CustomerCard"
 import Grid from '@mui/material/Grid';
 
 
 const List = () => {
+    const history = useHistory()
     const [customers, setCustomers] = useState ([])
     useEffect (() => {
         axios.get('https://reqres.in/api/users?')
@@ -26,6 +28,10 @@ const List = () => {
         })
     }
 
+    const handleEditCustomer = id => {
+        history.push(`/customers/edit/${id}`)
+    }
+
     return (
             <Grid container rowSpacing={2}>
                 {
@@ -38,6 +44,7 @@ const List = () => {
                                 email= {item.email}
                                 avatar = {item.avatar}
                                 onRemoveCustomer={handleRemoveCustomer}
+                                onEditCustomer={handleEditCustomer}
                             />
                         </Grid>
                     ))   
